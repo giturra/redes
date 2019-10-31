@@ -14,53 +14,53 @@ Purchase:
 
 <head>
     {% load static %}
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>{{ title }}</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta name="description" content="Job Pro" />
-    <meta name="keywords" content="Job Pro" />
-    <meta name="author" content="" />
-    <meta name="MobileOptimized" content="320" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta name="description" content="Job Pro"/>
+    <meta name="keywords" content="Job Pro"/>
+    <meta name="author" content=""/>
+    <meta name="MobileOptimized" content="320"/>
     <!--srart theme style -->
-    <link rel="stylesheet" type="text/css" href="{% static "css/animate.css" %}" />
-    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.css" %}" />
-    <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.css" %}" />
-    <link rel="stylesheet" type="text/css" href="{% static "css/fonts.css" %}" />
-    <link rel="stylesheet" type="text/css" href="{% static "css/reset.css" %}" />
-    <link rel="stylesheet" type="text/css" href="{% static "css/owl.carousel.css" %}" />
-    <link rel="stylesheet" type="text/css" href="{% static "css/owl.theme.default.css" %}" />
-    <link rel="stylesheet" type="text/css" href="{% static "css/flaticon.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/animate.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/font-awesome.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/fonts.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/reset.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/owl.carousel.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/owl.theme.default.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "css/flaticon.css" %}"/>
     {% block specific_css %}{% endblock specific_css %}
     <!-- favicon links -->
-    <link rel="shortcut icon" type="image/png" href="{% static "images/header/favicon.ico" %}" />
+    <link rel="shortcut icon" type="image/png" href="{% static "images/header/favicon.ico" %}"/>
 </head>
 
 <body>
-    <!-- preloader Start -->
-    <div id="preloader">
-        <div id="status"><img src="{% static "images/header/loadinganimation.gif" %}" id="preloader_image" alt="loader">
-        </div>
+<!-- preloader Start -->
+<div id="preloader">
+    <div id="status"><img src="{% static "images/header/loadinganimation.gif" %}" id="preloader_image" alt="loader">
     </div>
-    <!-- Top Scroll End -->
+</div>
+<!-- Top Scroll End -->
 
-    {% block header %}{% endblock header %}
+{% block header %}{% endblock header %}
 
-    {% block content %}{% endblock content %}
+{% block content %}{% endblock content %}
 
-    {% include 'footer.html' %}
+{% include 'footer.html' %}
 
-    <!--main js file start-->
-    <script src="{% static "js/jquery_min.js" %}"></script>
-    <script src="{% static "js/bootstrap.js" %}"></script>
-    <script src="{% static "js/jquery.menu-aim.js" %}"></script>
-    <script src="{% static "js/jquery.countTo.js" %}"></script>
-    <script src="{% static "js/jquery.inview.min.js" %}"></script>
-    <script src="{% static "js/owl.carousel.js" %}"></script>
-    <script src="{% static "js/modernizr.js" %}"></script>
+<!--main js file start-->
+<script src="{% static "js/jquery_min.js" %}"></script>
+<script src="{% static "js/bootstrap.js" %}"></script>
+<script src="{% static "js/jquery.menu-aim.js" %}"></script>
+<script src="{% static "js/jquery.countTo.js" %}"></script>
+<script src="{% static "js/jquery.inview.min.js" %}"></script>
+<script src="{% static "js/owl.carousel.js" %}"></script>
+<script src="{% static "js/modernizr.js" %}"></script>
 
-    {% block specific_js %}{% endblock specific_js %}
+{% block specific_js %}{% endblock specific_js %}
 
-    <!--main js file end-->
+<!--main js file end-->
 
 </body>
 </html>
