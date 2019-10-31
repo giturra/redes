@@ -2,6 +2,9 @@
 
 {% load static %}
 
+{% load crispy_forms_tags %}
+{% crispy example_form example_form.helper %}
+
 {% block specific_css %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style_II.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/responsive2.css' %}"/>
@@ -125,6 +128,11 @@
             </div>
         </div>
     </div>
+
+    <form enctype="multipart/form-data" method="post">
+        {% crispy form %}
+
+    </form>
     <!-- jp ad post Wrapper End -->
 {% endblock content %}
 
