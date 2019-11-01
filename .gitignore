@@ -257,5 +257,6 @@ fabric.properties
 
 env/
 
-*/migrations/
+*/migrations/000*
 
+.idea/

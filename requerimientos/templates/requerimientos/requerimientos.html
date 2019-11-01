@@ -3,7 +3,7 @@
 {% load static %}
 
 {% load crispy_forms_tags %}
-{% crispy example_form example_form.helper %}
+{% crispy example_form requirement_form.helper %}
 
 {% block specific_css %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style_II.css' %}"/>
@@ -18,121 +18,133 @@
 {% endblock header %}
 
 {% block content %}
-    <!-- jp Tittle Wrapper Start -->
-    <div class="jp_tittle_main_wrapper">
-        <div class="jp_tittle_img_overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="jp_tittle_heading_wrapper">
-                        <div class="jp_tittle_heading">
-                            <h2>Add-Posting</h2>
-                        </div>
-                        <div class="jp_tittle_breadcrumb_main_wrapper">
-                            <div class="jp_tittle_breadcrumb_wrapper">
-                                <ul>
-                                    <li><a href="#">Home</a> <i class="fa fa-angle-right"></i></li>
-                                    <li>Add-Posting</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- jp Tittle Wrapper End -->
+{#    <!-- jp Tittle Wrapper Start -->#}
+{#    <div class="jp_tittle_main_wrapper">#}
+{#        <div class="jp_tittle_img_overlay"></div>#}
+{#        <div class="container">#}
+{#            <div class="row">#}
+{#                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">#}
+{#                    <div class="jp_tittle_heading_wrapper">#}
+{#                        <div class="jp_tittle_heading">#}
+{#                            <h2>Add-Posting</h2>#}
+{#                        </div>#}
+{#                        <div class="jp_tittle_breadcrumb_main_wrapper">#}
+{#                            <div class="jp_tittle_breadcrumb_wrapper">#}
+{#                                <ul>#}
+{#                                    <li><a href="#">Home</a> <i class="fa fa-angle-right"></i></li>#}
+{#                                    <li>Add-Posting</li>#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#    <!-- jp Tittle Wrapper End -->#}
     <!-- jp ad post Wrapper Start -->
     <div class="jp_adp_main_section_wrapper">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="jp_adp_form_heading_wrapper">
-                        <h2>Job Details</h2>
+                <form>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="jp_adp_form_heading_wrapper">
+                            <h1 class="text-primary">Formulario de Requerimientos de Empresas</h1>
+                        </div>
+                        <hr>
                     </div>
-                    <div class="jp_adp_form_wrapper">
-                        <input type="text" placeholder="Job Title">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="jp_adp_form_wrapper">
+                            {{ form.nombre_empresa|as_crispy_field }}
+                        </div>
                     </div>
-                    <div class="jp_adp_form_wrapper">
-                        <select>
-                            <option>Job Location</option>
-                            <option>Job Location</option>
-                            <option>Job Location</option>
-                            <option>Job Location</option>
-                        </select>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="jp_adp_textarea_main_wrapper">
+                            {{ form.descripcion|as_crispy_field }}
+                        </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-md-6 col-xs-12">
-                            <div class="jp_adp_form_wrapper">
-                                <input type="text" placeholder="Salary Min">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="jp_adp_form_wrapper">
+                            {{ form.representante|as_crispy_field }}
+                        </div>
+                    </div>
+
+
+
+{#                        <div class="jp_adp_form_wrapper">#}
+{#                            <select>#}
+{#                                <option>Job Location</option>#}
+{#                                <option>Job Location</option>#}
+{#                                <option>Job Location</option>#}
+{#                                <option>Job Location</option>#}
+{#                            </select>#}
+{#                        </div>#}
+{#                        <div class="row">#}
+{#                            <div class="col-lg-6 col-md-6 col-md-6 col-xs-12">#}
+{#                                <div class="jp_adp_form_wrapper">#}
+{#                                    <input type="text" placeholder="Salary Min">#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="col-lg-6 col-md-6 col-md-6 col-xs-12">#}
+{#                                <div class="jp_adp_form_wrapper">#}
+{#                                    <input type="text" placeholder="Salary Max">#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="jp_adp_form_wrapper">#}
+{#                            <input type="text" placeholder="Notic Period">#}
+{#                        </div>#}
+
+{#                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 bottom_line_Wrapper">#}
+{#                        <div class="jp_adp_form_heading_wrapper">#}
+{#                            <p>Fields with * are mandetory</p>#}
+{#                        </div>#}
+{#                        <div class="jp_adp_form_wrapper">#}
+{#                            <select>#}
+{#                                <option>Job Category</option>#}
+{#                                <option>Job Category</option>#}
+{#                                <option>Job Category</option>#}
+{#                                <option>Job Category</option>#}
+{#                            </select>#}
+{#                        </div>#}
+{#                        <div class="jp_adp_form_wrapper">#}
+{#                            <select>#}
+{#                                <option>Job Type</option>#}
+{#                                <option>Job Type</option>#}
+{#                                <option>Job Type</option>#}
+{#                                <option>Job Type</option>#}
+{#                            </select>#}
+{#                        </div>#}
+{#                        <div class="jp_adp_form_wrapper">#}
+{#                            <input type="text" placeholder="Skills required">#}
+{#                        </div>#}
+{#                        <div class="jp_adp_form_wrapper">#}
+{#                            <input type="text" placeholder="Joining facilities">#}
+{#                        </div>#}
+{#                    </div>#}
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="jp_adp_choose_resume">
+                            <p>Company Post</p>
+                            <div class="custom-input">
+                                <span><i class="fa fa-upload"></i> &nbsp;Upload Job Post</span>
+                                <input type="file" name="resume" id="resume"/>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-md-6 col-xs-12">
-                            <div class="jp_adp_form_wrapper">
-                                <input type="text" placeholder="Salary Max">
-                            </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="jp_adp_choose_resume_bottom_btn_post">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-plus-circle"></i>&nbsp; Post a job</a></li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="jp_adp_form_wrapper">
-                        <input type="text" placeholder="Notic Period">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 bottom_line_Wrapper">
-                    <div class="jp_adp_form_heading_wrapper">
-                        <p>Fields with * are mandetory</p>
-                    </div>
-                    <div class="jp_adp_form_wrapper">
-                        <select>
-                            <option>Job Category</option>
-                            <option>Job Category</option>
-                            <option>Job Category</option>
-                            <option>Job Category</option>
-                        </select>
-                    </div>
-                    <div class="jp_adp_form_wrapper">
-                        <select>
-                            <option>Job Type</option>
-                            <option>Job Type</option>
-                            <option>Job Type</option>
-                            <option>Job Type</option>
-                        </select>
-                    </div>
-                    <div class="jp_adp_form_wrapper">
-                        <input type="text" placeholder="Skills required">
-                    </div>
-                    <div class="jp_adp_form_wrapper">
-                        <input type="text" placeholder="Joining facilities">
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="jp_adp_textarea_main_wrapper">
-                        <textarea rows="7" placeholder="Job Description"></textarea>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="jp_adp_choose_resume">
-                        <p>Company Post</p>
-                        <div class="custom-input">
-                            <span><i class="fa fa-upload"></i> &nbsp;Upload Job Post</span>
-                            <input type="file" name="resume" id="resume"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="jp_adp_choose_resume_bottom_btn_post">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-plus-circle"></i>&nbsp; Post a job</a></li>
-                        </ul>
-                    </div>
-                </div>
+                </form>
+
             </div>
         </div>
     </div>
 
-    <form enctype="multipart/form-data" method="post">
-        {% crispy form %}
-
-    </form>
     <!-- jp ad post Wrapper End -->
 {% endblock content %}
 

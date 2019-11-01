@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import RequirementForm
+from .views import Requirement
 
 urlpatterns = [
-    path('', RequirementForm.as_view())
+    path('', Requirement.as_view())
 ]
