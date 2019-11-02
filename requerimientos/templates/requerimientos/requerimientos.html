@@ -8,6 +8,7 @@
 {% block specific_css %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/style_II.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/responsive2.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/requerimientos.css' %}"/>
 
     <!-- favicon links -->
     <link rel="shortcut icon" type="image/png" href="{% static 'images/header/favicon.ico' %}"/>
@@ -51,7 +52,6 @@
                         <div class="jp_adp_form_heading_wrapper">
                             <h1 class="text-primary">Formulario de Requerimientos de Empresas</h1>
                         </div>
-                        <hr>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="jp_adp_form_wrapper">
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="jp_adp_textarea_main_wrapper">
+                        <div class="textarea_requerimientos">
                             {{ form.descripcion|as_crispy_field }}
                         </div>
                     </div>
@@ -68,6 +68,23 @@
                             {{ form.representante|as_crispy_field }}
                         </div>
                     </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="jp_adp_form_wrapper">
+                            {{ form.celular|as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="jp_adp_form_wrapper">
+                            {{ form.email|as_crispy_field }}
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="jp_adp_form_heading_wrapper">
+                            <h1 class="text-primary">Formulario de Requerimientos de Empresas</h1>
+                        </div>
+                    </div>
+                    <hr>
 
 
 

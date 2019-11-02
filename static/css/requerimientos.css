@@ -1,0 +1,23 @@
+.textarea_requerimientos{
+	float:left;
+	width:100%;
+	padding-top:30px;
+}
+.textarea_requerimientos textarea{
+	width:100%;
+	border: 1px solid #e9e9e9;
+	padding-left:20px;
+	padding-top:20px;
+	-webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+	resize:none;
+}
+.textarea_requerimientos textarea:hover, .textarea_requerimientos textarea:focus {
+    border: 1px solid #23c0e9;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+}
