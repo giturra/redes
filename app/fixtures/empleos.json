@@ -1,41 +1,41 @@
 [
   {
-    "model": "perfiles.empleo",
+    "model": "app.empleo",
     "pk": 1,
     "fields": {
       "tipo": "Práctica I"
     }
   },
   {
-    "model": "perfiles.empleo",
+    "model": "app.empleo",
     "pk": 2,
     "fields": {
       "tipo": "Práctica II"
     }
   },
   {
-    "model": "perfiles.empleo",
+    "model": "app.empleo",
     "pk": 3,
     "fields": {
       "tipo": "Práctica III"
     }
   },
   {
-    "model": "perfiles.empleo",
+    "model": "app.empleo",
     "pk": 4,
     "fields": {
       "tipo": "Memoria"
     }
   },
   {
-    "model": "perfiles.empleo",
+    "model": "app.empleo",
     "pk": 5,
     "fields": {
       "tipo": "Part Time"
     }
   },
   {
-    "model": "perfiles.empleo",
+    "model": "app.empleo",
     "pk": 6,
     "fields": {
       "tipo": "Full Time"
