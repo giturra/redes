@@ -47,44 +47,73 @@
     <div class="jp_adp_main_section_wrapper">
         <div class="container">
             <div class="row">
-                <form>
+                <form action="{% url 'requerimientos:form_req' %}" method="post">
+                    {% csrf_token %}
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="jp_adp_form_heading_wrapper">
                             <h1 class="text-primary">Formulario de Requerimientos de Empresas</h1>
                         </div>
+                        <hr>
                     </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="jp_adp_form_wrapper">
-                            {{ form.nombre_empresa|as_crispy_field }}
-                        </div>
+                    <div>
+                        {% crispy form %}
+{#                        {% if form.errors %}#}
+{#    {% for field in form %}#}
+{#        {{ field }}#}
+{#        {% for error in field.errors %}#}
+{#            <div class="alert alert-danger">#}
+{#                <strong>{{ error|escape }}</strong>#}
+{#            </div>#}
+{#        {% endfor %}#}
+{#    {% endfor %}#}
+{#    {% for error in form.non_field_errors %}#}
+{#        <div class="alert alert-danger">#}
+{#            <strong>{{ error|escape }}</strong>#}
+{#        </div>#}
+{#    {% endfor %}#}
+{#{% endif %}#}
                     </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="textarea_requerimientos">
-                            {{ form.descripcion|as_crispy_field }}
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="jp_adp_form_wrapper">
-                            {{ form.representante|as_crispy_field }}
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="jp_adp_form_wrapper">
-                            {{ form.celular|as_crispy_field }}
-                        </div>
-                    </div>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="jp_adp_form_wrapper">
-                            {{ form.email|as_crispy_field }}
-                        </div>
-                    </div>
-                    <br>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="jp_adp_form_heading_wrapper">
-                            <h1 class="text-primary">Formulario de Requerimientos de Empresas</h1>
-                        </div>
-                    </div>
-                    <hr>
+{#                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">#}
+{#                        <div class="jp_adp_form_wrapper">#}
+{#                            {{ form.nombre_empresa|as_crispy_field }}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">#}
+{#                        <div class="textarea_requerimientos">#}
+{#                            {{ form.descripcion|as_crispy_field }}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">#}
+{#                        <div class="jp_adp_form_wrapper">#}
+{#                            {{ form.representante|as_crispy_field }}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">#}
+{#                        <div class="jp_adp_form_wrapper">#}
+{#                            {{ form.celular|as_crispy_field }}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">#}
+{#                        <div class="jp_adp_form_wrapper">#}
+{#                            {{ form.email|as_crispy_field }}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <br>#}
+{#                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">#}
+{#                        <div class="jp_adp_form_heading_wrapper">#}
+{#                            <h2 class="text-primary">Día de Asistencia</h2>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">#}
+{#                        <div class="jp_adp_form_heading_wrapper">#}
+{#                            {{ form.dia_asistencia|as_crispy_field }}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div>#}
+{#                        <div class="jp_adp_form_heading_wrapper">#}
+{#                            <input type="submit" value="Submit">#}
+{#                        </div>#}
+{#                    </div>#}
 
 
 

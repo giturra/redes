@@ -132,3 +132,11 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
+# Crispy Form Theme - Bootstrap 3
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
+# For Bootstrap 3, change error alert to 'danger'
+from django.contrib import messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger'
+}

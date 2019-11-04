@@ -1,12 +1,13 @@
-from django.views.generic import TemplateView
+from django.views.generic import FormView
 from .forms import RequirementForm
 
 
-class Requirement(TemplateView):
+class Requirement(FormView):
     template_name = "requerimientos/requerimientos.html"
-    http_method_names = ['get', 'post']
+    form_class = RequirementForm
+    success_url = '/'
 
-    def get(self, request, *args, **kwargs):
-        if "form" not in kwargs:
-            kwargs['form'] = RequirementForm()
-            return super(Requirement, self).get(request, *args, **kwargs)
+    def form_valid(self, form):
+        form.save()
+        print("")
+        return super().form_valid(form)
