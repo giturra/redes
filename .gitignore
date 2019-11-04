@@ -260,3 +260,5 @@ env/
 */migrations/000*
 
 .idea/
+
+cv/
