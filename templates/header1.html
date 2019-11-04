@@ -189,7 +189,7 @@
                                 <li><a href="#"><i class="fa fa-sign-in"></i>&nbsp; ACCEDER</a></li>
                             {% else %}
                                 <li><a href="#"><i class="fa fa-user"></i>&nbsp; MI PERFIL</a></li>
-                                <li><a href="#"><i class="fa fa-sign-in"></i>&nbsp; SALIR</a></li>
+                                <li><a href="{% url 'perfiles:logout' %}"><i class="fa fa-sign-in"></i>&nbsp; SALIR</a></li>
                             {% endif %}
                         </ul>
                     </div>

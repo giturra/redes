@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from app.models import Carrera, Empleo
 
 
 def user_cv_path(instance, filename):
