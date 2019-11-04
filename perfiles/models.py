@@ -2,20 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Carrera(models.Model):
-    plan = models.CharField(max_length=150)
-
-    def __str__(self):
-        return self.plan
-
-
-class Empleo(models.Model):
-    tipo = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.tipo
-
-
 def user_cv_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/cv/user_<id>/<filename>
     return 'cv/user_{0}/{1}'.format(instance.usuario.id, filename)
