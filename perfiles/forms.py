@@ -7,7 +7,7 @@ from crispy_forms.layout import Submit, Layout, Div, Field
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Perfil
-        fields = '__all__'
+        fields = ['rut', 'carrera', 'empleo']
 
     def __init__(self, *args, **kwargs):
         super(ProfileForm, self).__init__(*args, **kwargs)
@@ -17,6 +17,6 @@ class ProfileForm(forms.ModelForm):
         self.helper.form_method = 'post'
         self.helper.form_action = 'submit_survey'
 
-        self.helper.layout = Layout(
-            
-        )
+        # self.helper.layout = Layout(
+        #     Field('usuario.firstname', css_class='form_control'),
+        # )

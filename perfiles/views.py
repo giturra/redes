@@ -1,5 +1,5 @@
 import os
-import .forms import ProfileForm
+from .forms import ProfileForm
 from django.http import HttpResponse
 from django.views.generic import FormView
 
