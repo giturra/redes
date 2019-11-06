@@ -1,8 +1,7 @@
 from django import forms
 from .models import Requerimiento
-from django.utils.translation import gettext_lazy as _
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit, Layout, Div, Field, Row, Column, BaseInput, Fieldset
+from crispy_forms.layout import Submit, Layout, Div, Field, Row, Column, Fieldset
 
 
 class RequirementForm(forms.ModelForm):
