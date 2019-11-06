@@ -212,7 +212,10 @@
                     
                     {% crispy user_form %}
                     {% crispy profile_form %}
-                </form>    
+
+                    {{ user_form.first_name.value }}
+                </form>
+                    
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

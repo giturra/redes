@@ -10,14 +10,20 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name']
+  
+    def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.fields['first_name'].label = "Nombre"
+        self.fields['last_name'].label = "Apellido" 
 
 
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Perfil
         fields = [
-            'rut', 'carrera', 'empleo', 'ano_ingreso', 'ano_egreso',
-            'perfil_pro'
+            'rut', 'carrera', 'empleo', 'foto_perfil', 'cv',
+            'ano_ingreso', 'ano_egreso', 'perfil_pro'
         ]
 
     def __init__(self, *args, **kwargs):

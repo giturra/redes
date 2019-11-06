@@ -1,10 +1,13 @@
 import os
 from .models import Perfil
+from django.urls import reverse_lazy
 from .forms import ProfileForm, UserForm
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import View
-from django.contrib.auth.models import User 
+from django.contrib.auth.models import User
+from django.views.generic.edit import UpdateView
+ 
 
 # class ProfilesData(FormView):
 #     template_name = 'perfiles/profile.html'
@@ -26,15 +29,22 @@ from django.contrib.auth.models import User
 #         response['Content-Disposition'] = 'inline;filename=cv.pdf'
 #         return response
 
-class Profile(View):
-    user_form = UserForm()
-    profile_form = ProfileForm()
-    context = {
-        'user_form':user_form, 'profile_form':profile_form
-    }
-    template_name = 'perfiles/profile.html'
+# class Profile(View):
+#     user_form = UserForm()
+#     profile_form = ProfileForm()
+#     context = {
+#         'user_form':user_form, 'profile_form':profile_form
+#     }
+#     template_name = 'perfiles/profile.html'
 
-    def get(self, request, *args, **kwargs):
-        user = User.objects.get(username=request.user.username)
-        self.context['user'] = user
-        return render(request, self.template_name, self.context)
+#     def get(self, request, *args, **kwargs):
+#         user = User.objects.get(username=request.user.username)
+#         self.context['user'] = user
+#         return render(request, self.template_name, self.context)
+
+class Profile(UpdateView):
+    model = Perfil
+    success_url = reverse_lazy('/')
+    fields = ['__all__']
+    slug_field = 'username'
+    slug_url_kwarg = 'username'
