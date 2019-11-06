@@ -9,5 +9,4 @@ class Requirement(FormView):
 
     def form_valid(self, form):
         form.save()
-        print("")
         return super().form_valid(form)

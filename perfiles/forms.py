@@ -1,13 +1,24 @@
 from django import forms
 from .models import Perfil
+from django.contrib.auth.models import User 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Div, Field
+
+
+class UserForm(forms.ModelForm):
+    
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name']
 
 
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Perfil
-        fields = ['rut', 'carrera', 'empleo']
+        fields = [
+            'rut', 'carrera', 'empleo', 'ano_ingreso', 'ano_egreso',
+            'perfil_pro'
+        ]
 
     def __init__(self, *args, **kwargs):
         super(ProfileForm, self).__init__(*args, **kwargs)

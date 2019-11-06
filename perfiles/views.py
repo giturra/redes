@@ -1,17 +1,19 @@
 import os
-from .forms import ProfileForm
+from .models import Perfil
+from .forms import ProfileForm, UserForm
 from django.http import HttpResponse
-from django.views.generic import FormView
+from django.shortcuts import render
+from django.views.generic import View
+from django.contrib.auth.models import User 
 
+# class ProfilesData(FormView):
+#     template_name = 'perfiles/profile.html'
+#     form_class = ProfileForm
+#     success_url = '/perfiles/'
 
-class ProfilesData(FormView):
-    template_name = 'perfiles/profile.html'
-    form_class = ProfileForm
-    success_url = '/perfiles/'
-
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
+#     def form_valid(self, form):
+#         form.save()
+#         return super().form_valid(form)
 
 
 # def resume_view(request):
@@ -24,3 +26,15 @@ class ProfilesData(FormView):
 #         response['Content-Disposition'] = 'inline;filename=cv.pdf'
 #         return response
 
+class Profile(View):
+    user_form = UserForm()
+    profile_form = ProfileForm()
+    context = {
+        'user_form':user_form, 'profile_form':profile_form
+    }
+    template_name = 'perfiles/profile.html'
+
+    def get(self, request, *args, **kwargs):
+        user = User.objects.get(username=request.user.username)
+        self.context['user'] = user
+        return render(request, self.template_name, self.context)

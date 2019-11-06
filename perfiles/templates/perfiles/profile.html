@@ -2,8 +2,10 @@
 
 {% load static %}
 
+
 {% load crispy_forms_tags %}
-{% crispy form profile_form.helper %}
+{% crispy userform user_form.helper %}
+{% crispy profileform profile_form.helper %}
 
 {% block specific_css %}
 <link rel="stylesheet" type="text/css" href="{% static "css/style_II.css" %}" />
@@ -61,7 +63,7 @@
                     <div class="jp_cp_rd_wrapper">
                         <ul>
                             <li><a href="#" data-toggle="modal" data-target="#modal-edit-profile"><i
-                                        class="fa fa-download"></i> &nbsp;Editar Perfil</a></li>
+                                        class="fa fa-edit"></i> &nbsp;Editar Perfil</a></li>
                             <li><a style="display: none"></a></li>
                         </ul>
                     </div>
@@ -207,7 +209,9 @@
             </div>
             <div class="modal-body">
                 <form>
-                    {% crispy form %}
+                    
+                    {% crispy user_form %}
+                    {% crispy profile_form %}
                 </form>    
             </div>
             <div class="modal-footer">

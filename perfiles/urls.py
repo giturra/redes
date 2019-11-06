@@ -1,5 +1,5 @@
 from django.contrib.auth.views import LoginView, LogoutView
-from .views import ProfilesData
+from .views import Profile
 from django.urls import path
 
 
@@ -10,6 +10,6 @@ urlpatterns = [
         name='login'
     ),
     path('salir/', LogoutView.as_view(), name='logout'),
-    path('perfil/', ProfilesData.as_view(), name='profile')
+    path('perfil/', Profile.as_view(), name='profile')
 ]
 
