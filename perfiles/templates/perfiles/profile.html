@@ -4,8 +4,8 @@
 
 
 {% load crispy_forms_tags %}
-{% crispy userform user_form.helper %}
-{% crispy profileform profile_form.helper %}
+{% crispy form profile_form.helper %}
+
 
 {% block specific_css %}
 <link rel="stylesheet" type="text/css" href="{% static "css/style_II.css" %}" />
@@ -208,16 +208,16 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="{% url 'perfiles:profile' %}" method="post">
+                    {% csrf_token %}
+                    {% crispy form %}
                     
-                    {% crispy user_form %}
-                    {% crispy profile_form %}
 
-                    {{ user_form.first_name.value }}
+                    
                 </form>
                     
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer">  
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary">Guardar Cambios</button>
             </div>

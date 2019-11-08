@@ -1,7 +1,7 @@
 import os
 from .models import Perfil
 from django.urls import reverse_lazy
-from .forms import ProfileForm, UserForm
+from .forms import ProfileForm
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import View
@@ -29,22 +29,28 @@ from django.views.generic.edit import UpdateView
 #         response['Content-Disposition'] = 'inline;filename=cv.pdf'
 #         return response
 
-# class Profile(View):
-#     user_form = UserForm()
-#     profile_form = ProfileForm()
-#     context = {
-#         'user_form':user_form, 'profile_form':profile_form
-#     }
-#     template_name = 'perfiles/profile.html'
+class Profile(View):
+    profile_form = ProfileForm()
+    context = {
+        'form':profile_form
+    }
+    template_name = 'perfiles/profile.html'
 
-#     def get(self, request, *args, **kwargs):
-#         user = User.objects.get(username=request.user.username)
-#         self.context['user'] = user
-#         return render(request, self.template_name, self.context)
-
-class Profile(UpdateView):
-    model = Perfil
-    success_url = reverse_lazy('/')
-    fields = ['__all__']
-    slug_field = 'username'
-    slug_url_kwarg = 'username'
+    def get(self, request, *args, **kwargs):
+        user = User.objects.get(username=request.user.username)
+        self.context['user'] = user
+        return render(request, self.template_name, self.context)
+    
+    def post(self, request, *args, **kwargs):
+        user = User.objects.get(username=request.user.username)
+        self.context['user'] = user
+        profile_form = ProfileForm(request.POST)
+        if profile_form.is_valid():
+            profile_form.save()
+        return render(request, self.template_name, context=self.context)
+# class Profile(UpdateView):
+#     model = Perfil
+#     success_url = reverse_lazy('/')
+#     fields = ['__all__']
+#     slug_field = 'username'
+#     slug_url_kwarg = 'username'
