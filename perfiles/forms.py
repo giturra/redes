@@ -1,24 +1,8 @@
 from django import forms
 from .models import Perfil
-from django.contrib.auth.models import User 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Div, Field, Submit
 
-
-# class UserForm(forms.ModelForm):
-    
-#     class Meta:
-#         model = User
-#         fields = ['first_name', 'last_name']
-  
-#     def __init__(self, *args, **kwargs):
-#         super(UserForm, self).__init__(*args, **kwargs)
-#         # self.helper = FormHelper()
-#         self.fields['first_name'].label = "Nombre"
-#         self.fields['last_name'].label = "Apellido"
-#         self.fields['first_name'].required = True
-#         self.fields['last_name'].required = True
-    
 
 class ProfileForm(forms.ModelForm):
     class Meta:
@@ -34,7 +18,7 @@ class ProfileForm(forms.ModelForm):
         self.helper.form_id = 'id-profile-form'
         self.helper.form_class = 'blueForms'
         self.helper.form_method = 'post'
-        self.helper.form_action = '/prefil'
+        self.helper.form_action = '/perfil/'
 
         self.helper.layout = Layout(
             Field('carrera'),
@@ -44,5 +28,4 @@ class ProfileForm(forms.ModelForm):
             Field('ano_ingreso'),
             Field('ano_egreso'),
             Field('perfil_pro'),
-            Submit('submit', 'Submit')
         )
