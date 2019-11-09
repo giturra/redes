@@ -26,3 +26,8 @@ STAND_CHOICES = (
     ('8', 'Stand 8'),
     ('9', 'Stand 9'),
 )
+
+TIPOS_ENTREVISTAS = (
+    ('1', 'Entrevistas individuales de 15 minutos'),
+    ('2', 'Otra modalidad')
+)

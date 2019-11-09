@@ -1,4 +1,5 @@
 from django.db import models
+from app.models import Carrera, Empleo
 from django.contrib.auth.models import User
 from app.models import Carrera, Empleo
 

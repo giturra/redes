@@ -12,10 +12,10 @@ class RequirementForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(RequirementForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.form_id = 'id-exampleForm'
+        self.helper.form_id = 'id-req-form'
         self.helper.form_class = 'blueForms'
         self.helper.form_method = 'post'
-        self.helper.form_action = 'submit_survey'
+        self.helper.form_action = '/requerimientos/'
         self.helper.layout = Layout(
 
             Field('nombre_empresa', css_class='form_control'),
@@ -43,7 +43,6 @@ class RequirementForm(forms.ModelForm):
                      Div('tiempo_entrevista', css_class='col-md-6')
                      ),
             Div('formato_entrevista', css_class='col-md-12'),
-            Submit('submit', 'Submit')
 
         )
 
@@ -51,4 +50,66 @@ class RequirementForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super(RequirementForm, self).clean()
-        nombre = cleaned_data.get('nombre_empresa')
+        entrevistadores = int(cleaned_data.get('entrevistadores'))
+        tipo_stand = cleaned_data.get('tipo_stand')
+        stand1 = cleaned_data.get('stand1')
+        stand2 = cleaned_data.get('stand2')
+        stand3 = cleaned_data.get('stand3')
+        almuerzos_normales = cleaned_data.get('almuerzos_normales')
+        almuerzos_vegetarianos = cleaned_data.get('almuerzos_vegetarianos')
+        almuerzos = almuerzos_normales + almuerzos_vegetarianos
+        if entrevistadores:
+            if tipo_stand == '1' and (entrevistadores > 2 or entrevistadores <= 1):
+                raise forms.ValidationError(
+                    "El Stand Simple sólo se admite un máximo de 2 entrevistadores."
+                )
+            elif tipo_stand == '2' and (entrevistadores > 3 or entrevistadores <= 1):
+                raise forms.ValidationError(
+                    "El Stand Especial 4 sólo se admite un máximo de 3 entrevistadores."
+                )
+            elif tipo_stand == '3' and (entrevistadores > 4 or entrevistadores <= 1):
+                raise forms.ValidationError(
+                    "El Stand Especial 5 sólo se admite un máximo de 4 entrevistadores."
+                )
+            elif tipo_stand == '4' and (entrevistadores > 4 or entrevistadores <= 1):
+                raise forms.ValidationError(
+                    "El Stand Doble sólo se admite un máximo de 4 entrevistadores."
+                )
+        if almuerzos:
+            if tipo_stand == '1' and almuerzos > 2:
+                raise forms.ValidationError(
+                    "El Stand Simple sólo se admite un máximo de 2 almuerzos."
+                )
+            elif tipo_stand == '2' and almuerzos > 3:
+                raise forms.ValidationError(
+                    "El Stand Especial 4 sólo se admite un máximo de 3 almuerzos."
+                )
+            elif tipo_stand == '3' and almuerzos > 4:
+                raise forms.ValidationError(
+                    "El Stand Especial 5 sólo se admite un máximo de 4 almuerzos."
+                )
+            elif tipo_stand == '4' and almuerzos > 4:
+                raise forms.ValidationError(
+                    "El Stand Doble sólo se admite un máximo de 4 almuerzos."
+                )
+            elif almuerzos < 0:
+                raise forms.ValidationError(
+                    "El número de almuerzos debe ser un número mayor a cero."
+                )
+        if stand1 and stand2 and stand3:
+            if stand1 == stand2:
+                raise forms.ValidationError(
+                    "Sus preferencias de Stand deben ser distintas."
+                )
+            elif stand2 == stand3:
+                raise forms.ValidationError(
+                    "Sus preferencias de Stand deben ser distintas."
+                )
+            elif stand1 == stand3:
+                raise forms.ValidationError(
+                    "Sus preferencias de Stand deben ser distintas."
+                )
+            elif stand1 == stand2 == stand3:
+                raise forms.ValidationError(
+                    "Sus preferencias de Stand deben ser distintas."
+                )

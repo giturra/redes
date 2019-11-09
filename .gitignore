@@ -261,8 +261,10 @@ env/
 
 .idea/
 
+media/
+
 cv/
 
-media/
+foto_perfil/
 
 .vscode/
