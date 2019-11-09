@@ -31,6 +31,10 @@ class Requerimiento(models.Model):
 
 
 class Producer(models.Model):
+
+    class Meta:
+        verbose_name = 'Productora'
+
     nombre = models.CharField(max_length=100)
     persona = models.CharField(max_length=100)
     contacto = models.CharField(max_length=100)
@@ -39,6 +43,10 @@ class Producer(models.Model):
 
 
 class Cupos(models.Model):
+
+    class Meta:
+        verbose_name = 'Cupo'
+
     carrera = models.ManyToManyField(Carrera)
     plan = models.ManyToManyField(Empleo)
     cupos = models.IntegerField()
