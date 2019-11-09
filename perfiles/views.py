@@ -10,6 +10,7 @@ from django.views.generic import TemplateView
 class Profile(LoginRequiredMixin, TemplateView):
     template_name = "perfiles/profile.html"
     http_method_names = ['get', 'post']
+    login_url = "/ingresar/"
 
     def get(self, request, *args, **kwargs):
         user = self.request.user
