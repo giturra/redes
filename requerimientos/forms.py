@@ -1,10 +1,16 @@
 from django import forms
 from .models import Requerimiento
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit, Layout, Div, Field, Row, Column, Fieldset
+from crispy_forms.layout import Submit, Layout, Div, Field, Row, Column, Fieldset, HTML
 
 
 class RequirementForm(forms.ModelForm):
+
+    productora_nombre = forms.CharField(max_length=50, label="Nombre productora", required=False)
+    persona_nombre = forms.CharField(max_length=50, label="Persona de contacto de la productora", required=False)
+    productora_contacto = forms.CharField(max_length=50, label="Teléfono de la persona de contacto", required=False)
+    productora_email = forms.CharField(max_length=50, label="Teléfono de la persona de contacto", required=False)
+
     class Meta:
         model = Requerimiento
         fields = '__all__'
@@ -28,6 +34,12 @@ class RequirementForm(forms.ModelForm):
                      Div('tipo_stand', css_class='col-md-6'),
                      Div('stand_propio', css_class='col-md-6')
             ),
+            HTML("<fieldset><legend hidden id='producer_legend'>Datos de la productora que instalará su stand propio.</legend>"),
+            Div('productora_nombre', css_class ='col-md-6', id="div-prod-nombre", style="display: none;"),
+            Div('persona_nombre', css_class ='col-md-6', id="div-pers-nombre", style="display: none;"),
+            Div('productora_contacto', css_class ='col-md-6', id="div-con-nombre", style="display: none;"),
+            Div('productora_email', css_class ='col-md-6', id="div-email-nombre", style="display: none;"),
+            HTML("</fieldset>"),
             Fieldset('Preferencia de Stand Layout',
                      Div('stand1', css_class='col-md-4'),
                      Div('stand2', css_class='col-md-4'),
@@ -50,7 +62,7 @@ class RequirementForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super(RequirementForm, self).clean()
-        entrevistadores = int(cleaned_data.get('entrevistadores'))
+        entrevistadores = cleaned_data.get('entrevistadores')
         tipo_stand = cleaned_data.get('tipo_stand')
         stand1 = cleaned_data.get('stand1')
         stand2 = cleaned_data.get('stand2')

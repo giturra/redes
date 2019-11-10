@@ -55,21 +55,7 @@
                     </div>
                     <div>
                         {% crispy form %}
-{#                        {% if form.errors %}#}
-{#    {% for field in form %}#}
-{#        {{ field }}#}
-{#        {% for error in field.errors %}#}
-{#            <div class="alert alert-danger">#}
-{#                <strong>{{ error|escape }}</strong>#}
-{#            </div>#}
-{#        {% endfor %}#}
-{#    {% endfor %}#}
-{#    {% for error in form.non_field_errors %}#}
-{#        <div class="alert alert-danger">#}
-{#            <strong>{{ error|escape }}</strong>#}
-{#        </div>#}
-{#    {% endfor %}#}
-{#{% endif %}#}
+
                     </div>
 {#                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">#}
 {#                        <div class="jp_adp_form_wrapper">#}
@@ -203,6 +189,24 @@
     <script>
         $("#id-send-form-req").click(function(){        
             $("#id-req-form").submit(); // Submit the form
+        });
+
+        $('#div_id_stand_propio').on('change', function () {
+            if ($('#id_stand_propio').val() == "True") {
+                $('#id_productora_email').attr('required', true);
+                $('#producer_legend').show();
+                $('#div-prod-nombre').show();
+                $('#div-pers-nombre').show();
+                $('#div-con-nombre').show();
+                $('#div-email-nombre').show();
+            } else {
+                $('#id_productora_email').attr('required', false);
+                $('#producer_legend').hide();
+                $('#div-prod-nombre').hide();
+                $('#div-pers-nombre').hide();
+                $('#div-con-nombre').hide();
+                $('#div-email-nombre').hide();
+            }
         });        
     </script>
 
