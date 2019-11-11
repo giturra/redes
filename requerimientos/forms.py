@@ -70,6 +70,11 @@ class RequirementForm(forms.ModelForm):
         almuerzos_normales = cleaned_data.get('almuerzos_normales')
         almuerzos_vegetarianos = cleaned_data.get('almuerzos_vegetarianos')
         almuerzos = almuerzos_normales + almuerzos_vegetarianos
+
+        prod = cleaned_data['productora_nombre']
+        per = cleaned_data['persona_nombre']
+        con = cleaned_data['productora_contacto']
+        email = cleaned_data['productora_email']
         if entrevistadores:
             if tipo_stand == '1' and (entrevistadores > 2 or entrevistadores <= 1):
                 raise forms.ValidationError(
@@ -125,3 +130,15 @@ class RequirementForm(forms.ModelForm):
                 raise forms.ValidationError(
                     "Sus preferencias de Stand deben ser distintas."
                 )
+        if not valid_prod(prod, per, con, email):
+            raise forms.ValidationError(
+                    "hdfsjhfjhdsfjs."
+                )
+
+
+def valid_prod(prod, per, con, em):
+    if (prod and per and con and em):
+        return True
+    elif not (prod and per and con and em):
+        return True
+    return False
