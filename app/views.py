@@ -17,7 +17,13 @@ class Contact(TemplateView):
         email = request.POST['email-form']
         subject = request.POST['subject-form']
         message = request.POST['message-form']
-        send_mail(subject, message, EMAIL_HOST_USER, [EMAIL_HOST_USER], fail_silently=False)
+        msg = "Mensaje enviado desde Contacto Pagina Web \n" + "Nombre: " + name + "\n" + "Email: " + email + "\n" + "Mensaje: " + message
+        send_mail(
+            "Mensaje enviado desde Contacto Pagina Web", 
+            msg, 
+            EMAIL_HOST_USER, 
+            [EMAIL_HOST_USER], 
+            fail_silently=False)
         return render(request, self.template_name)
         
 
