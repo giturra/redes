@@ -1,7 +1,8 @@
-from django.views.generic import FormView
+from django.views.generic import FormView, ListView
 from django.forms import ValidationError
 from .forms import RequirementForm
 from .models import Requerimiento, Producer
+from app.models import Carrera
 
 
 class Requirement(FormView):
@@ -24,3 +25,11 @@ class Requirement(FormView):
                 requerimiento=req
             )
         return super().form_valid(form)
+
+
+class QuotaRequirement(ListView):
+    template_name = "requerimientos/requerimientos-cupos.html"
+    model = Carrera
+    context_object_name = "carreras"
+    
+    

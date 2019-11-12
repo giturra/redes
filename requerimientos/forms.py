@@ -22,6 +22,8 @@ class RequirementForm(forms.ModelForm):
         self.helper.form_class = 'blueForms'
         self.helper.form_method = 'post'
         self.helper.form_action = '/requerimientos/'
+        self.fields['tiempo_entrevista'].required = False
+        self.fields['formato_entrevista'].required = False
         self.helper.layout = Layout(
 
             Field('nombre_empresa', css_class='form_control'),
@@ -130,15 +132,15 @@ class RequirementForm(forms.ModelForm):
                 raise forms.ValidationError(
                     "Sus preferencias de Stand deben ser distintas."
                 )
-        if not valid_prod(prod, per, con, email):
-            raise forms.ValidationError(
-                    "hdfsjhfjhdsfjs."
-                )
+#         if not valid_prod(prod, per, con, email):
+#             raise forms.ValidationError(
+#                     "hdfsjhfjhdsfjs."
+#                 )
 
 
-def valid_prod(prod, per, con, em):
-    if (prod and per and con and em):
-        return True
-    elif not (prod and per and con and em):
-        return True
-    return False
+# def valid_prod(prod, per, con, em):
+#     if (prod and per and con and em):
+#         return True
+#     elif not (prod and per and con and em):
+#         return True
+#     return False
