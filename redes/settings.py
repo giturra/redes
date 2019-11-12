@@ -146,3 +146,13 @@ from django.contrib import messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+
+# Email Settings
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "redesbeauchef@fcfm.uchile.cl"
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_REDES')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+DEFAULT_FROM_EMAIL = 'redesbeauchef@fcfm.uchile.cl'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

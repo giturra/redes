@@ -1,4 +1,163 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block specific_css %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/style_II.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/responsive2.css" %}" />
+{% endblock specific_css %}
+
+{% block header %}
+    {% include "header2.html" %}
+{% endblock header %}
+
+{% block content %}
+    <!-- jp Tittle Wrapper Start -->
+    <div class="jp_tittle_main_wrapper">
+        <div class="jp_tittle_img_overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="jp_tittle_heading_wrapper">
+                        <div class="jp_tittle_heading">
+                            <h2>Contact Us</h2>
+                        </div>
+                        <div class="jp_tittle_breadcrumb_main_wrapper">
+                            <div class="jp_tittle_breadcrumb_wrapper">
+                                <ul>
+                                    <li><a href="#">Home</a> <i class="fa fa-angle-right"></i></li>
+                                    <li><a href="#">Pages</a> <i class="fa fa-angle-right"></i></li>
+                                    <li>Contact Us</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jp Tittle Wrapper End -->
+    <!-- jp Contact heading Wrapper Start -->
+    <div class="jp_contact_heading_main_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="jp_contact_heading_wrapper">
+                        <h2>Our Helpline 24x7 Available</h2>
+                        <p>Call us at <span>+0123 125 1457</span> or Email us at <a href="#">support@site.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="jp_contact_map_wrapper">
+        <div id="map" style="width:100%; float:left; height:600px;"></div>
+        <div class="jp_map_cont_label">
+            <h3>You can Find us..</h3>
+            <p>110, B Kalani Bag Dewas #455001 MP India</p>
+        </div>
+    </div>
+    <!-- jp Contact heading Wrapper End -->
+    <!-- jp Contact form Wrapper Start -->
+    <div class="jp_contact_form_main_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="jp_contact_form_heading_wrapper">
+                        <h2>Envíanos un mensaje</h2>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                    <form id="contact-form" action="{% url 'app:contact' %}" method="post">
+                        {% csrf_token %}
+                        <div class="jp_contact_form_box">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="jp_contact_inputs_wrapper">
+                                    <i class="fa fa-user"></i><input type="text" name="name-form" placeholder="Nombre *" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="jp_contact_inputs_wrapper jp_contact_inputs2_wrapper">
+                                    <i class="fa fa-envelope"></i><input type="email" name="email-form" placeholder="Correo Eléctronico *" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="jp_contact_inputs_wrapper jp_contact_inputs3_wrapper">
+                                    <i class="fa fa-pencil-square-o"></i><input type="text" name="subject-form" placeholder="Asunto" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="jp_contact_inputs_wrapper jp_contact_inputs4_wrapper">
+                                    <i class="fa fa-text-height"></i><textarea rows="6" name="message-form" placeholder="Mensaje *" required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="jp_contact_form_btn_wrapper">
+                                    <ul>
+                                        <li><a href="#" href="javascript:{}" onclick="document.getElementById('contact-form').submit();"><i class="fa fa-plus-circle"></i>&nbsp; ENVIAR</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="jp_contact_right_box_wrapper">
+                        <div class="jp_contact_form_add_heading_wrapper">
+                            <h2>Contact Info</h2>
+                        </div>
+                        <div class="jp_form_add_wrapper gc_map_add_wrapper1">
+                            <div class="jp_map_location_icon_wrapper">
+                                <i class="fa fa-map-marker"></i>
+                            </div>
+                            <div class="gc_map_location_icon_cont_wrapper">
+                                <h3>Beauchef 851, Santiago de Chile</h3>
+                            </div>
+                        </div>
+                        <div class="jp_form_add_wrapper gc_map_add_wrapper2">
+                            <div class="jp_map_location_icon_wrapper">
+                                <i class="fa fa-phone"></i>
+                            </div>
+                            <div class="gc_map_location_icon_cont_wrapper gc_map_location_icon_cont_wrapper2">
+                                <h3> +61 3 8376 6284</h3>
+                            </div>
+                        </div>
+                        <div class="jp_form_add_wrapper gc_map_add_wrapper2">
+                            <div class="jp_map_location_icon_wrapper">
+                                <i class="fa fa-fax"></i>
+                            </div>
+                            <div class="gc_map_location_icon_cont_wrapper gc_map_location_icon_cont_wrapper3">
+                                <h3> +61 3 8376 6284</h3>
+                            </div>
+                        </div>
+                        <div class="jp_form_add_wrapper gc_map_add_wrapper3">
+                            <div class="jp_map_location_icon_wrapper">
+                                <i class="fa fa-envelope"></i>
+                            </div>
+                            <div class="gc_map_location_icon_cont_wrapper gc_map_location_icon_cont_wrapper4">
+                                <h3> <a href="#">contacto@redesbeauchef.ing.uchile.cl</a></h3>
+                            </div>
+                        </div>
+                        <div class="jp_contact_form_social_icon">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                                <li class="hidden-xs"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li class="hidden-xs"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jp Contact form Wrapper End -->
+    
+    
+{% endblock content %}
+
+{% comment %} <!DOCTYPE html>
 <!-- 
 Template Name: Job Pro
 Version: 1.0.0
@@ -648,4 +807,27 @@ Purchase:
     </script>
 </body>
 
-</html>
+</html> {% endcomment %}
+
+{% block specific_js %}
+
+    <script src="{% static "js/jquery.magnific-popup.js" %}"></script>
+    <script src="{% static "js/custom_II.js" %}"></script>
+    <!--main js file end-->
+    <script>
+        function initMap() {
+        	var uluru = {lat: -36.742775, lng:  174.731559};
+        	var map = new google.maps.Map(document.getElementById('map'), {
+        	zoom: 15,
+        	scrollwheel: false,
+        	center: uluru
+        	});
+        	var marker = new google.maps.Marker({
+        	position: uluru,
+        	map: map
+        	});
+        	}
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmdG8C6ItElq5ipuFv6O9AE48wyZm_vqU&callback=initMap">
+    </script>
+{% endblock specific_js %}
