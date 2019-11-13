@@ -74,6 +74,7 @@
             <div class="container">
                 <form method="post" action="{% url 'requerimientos:form-cupos' %}" onsubmit="" id="form-carreras">
                     {% csrf_token %}
+                    <input type="hidden" id="n_carreras" name="n_carreras" value="1">
                     <div class="select_carrera_row_wrapper">
                         <a href="#" class="borrar_fila">
                             <i class="fa fa-times"></i>
@@ -125,7 +126,8 @@
                 </div>
                 <div class="login_btn_wrapper register_btn_wrapper login_wrapper"
                      style="background-color: #fff; border-top: 1px solid #e9e9e9; border-bottom: 0; margin-top: 20px;">
-                    <a class="btn btn-primary login_btn" href="javascript:{}" onclick="document.getElementById('form-carreras').submit();"> confirmar </a>
+                    <!--<a class="btn btn-primary login_btn" href="javascript:{}" onclick="document.getElementById('form-carreras').submit();"> confirmar </a> -->
+                    <a class="btn btn-primary login_btn" href="javascript:{}" onclick="form_data();"> confirmar </a>
                 </div>
             </div>
         </div>
@@ -171,6 +173,102 @@
 
     {# el javascript esta aqui porque se usan tags de django #}
     <script type="text/javascript">
+
+        function form_data() {
+            var data = $('#form-carreras').serializeArray();
+            //console.log($('#form-carreras'));
+            //document.getElementById('form-carreras').submit();
+            console.log(data);
+            let n_carreras = 0;
+            for (const prop in data) {
+                //console.log(data[prop]["name"]);
+                if (data[prop]["name"] ==  "n_carreras")
+                    n_carreras = data[prop]["value"]
+            }
+            
+            let count = 0;
+            let carreras = [];
+            let carrera = 0;
+            while (count < n_carreras) {
+                let arreglo = {};
+                let ofertasCupos = []; 
+                for (const prop in data) {
+                    let datos = {};
+                    //if (data[prop]["name"] ==  "oferta_"+(parseInt(count)+1)+"[]") {
+                    //    datos[data[prop]["name"]] = 1;
+                    //    console.log(datos);
+                    //}
+
+                    if (data[prop]["name"] == "carrera_"+(parseInt(count)+1)) {
+                        carrera = data[prop]["value"];
+                        
+                    }
+
+                    if (data[prop]["name"] == "prctica1_"+(parseInt(count)+1)) {
+                        datos["p1"] = data[prop]["value"];
+                        console.log(datos);
+                    }
+
+                    if (data[prop]["name"] == "prctica2_"+(parseInt(count)+1)) {
+                        datos["p2"] = data[prop]["value"];
+                        console.log(datos);
+                    }
+                    if (data[prop]["name"] == "prctica3_"+(parseInt(count)+1)) {
+                        datos["p3"] = data[prop]["value"];
+                        console.log(datos);
+                    }
+
+                    if (data[prop]["name"] == "memoria_"+(parseInt(count)+1)) {
+                        datos["me"] = data[prop]["value"];
+                        console.log(datos);
+                    }
+
+                    if (data[prop]["name"] == "parttime_"+(parseInt(count)+1)) {
+                        datos["pt"] = data[prop]["value"];
+                        console.log(datos);
+                    }
+
+                    if (data[prop]["name"] == "fulltime_"+(parseInt(count)+1)) {
+                        datos["ft"] = data[prop]["value"];
+                        console.log(datos);
+                    } 
+
+                    if (!jQuery.isEmptyObject(datos)) {
+                        ofertasCupos.push(datos);
+                    }
+                    
+                    
+                    
+                    
+                    
+                }
+                arreglo[carrera] = ofertasCupos
+                carreras.push(arreglo);
+                count++;
+            }
+            carreras = JSON.stringify(carreras);
+
+            $.ajax({
+                type: 'post',
+                url: '/requerimientos/cupos/',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                    valores: carreras
+                },
+                dataType: 'json',
+                success: function (data) {
+                    if (data.is_taken) {
+                        alert(data.error_message);
+                    }
+                    console.log("wena");
+                    window.location = '/';
+                    
+                }
+            });
+        }
+
+        
+
         $(document).ready(function () {
 
             // se aplica select2 a los selects existentes
@@ -229,18 +327,6 @@
                 {
                     plan: "Geología",
                     ofertas: ['Práctica 1', "Práctica 2", 'Práctica 3', "Memoria", "Part-Time"]
-                },
-                {
-                    plan: "Magíster en Ciencias de Computación",
-                    ofertas: ["Memoria", "Part-Time"]
-                },
-                {
-                    plan: "Magíster en Tecnologías de Información",
-                    ofertas: ["Memoria", "Part-Time"]
-                },
-                {
-                    plan: "Magíster en Ciencias de la Ingeniería",
-                    ofertas: ["Memoria", "Part-Time"]
                 },
             ];
 
@@ -310,9 +396,13 @@
                     });
                 });
 
-                // boton para eliminar la fila
+                    // boton para eliminar la fila
                 $('.borrar_fila').on('click', function () {
                     $(this).parent().remove();
+                    var n_carreras = $('#n_carreras')
+                    var num = parseInt(n_carreras.val());
+                    console.log(num);
+                    n_carreras.val(num - 1);
                     return false;
                 });
             };
@@ -324,6 +414,9 @@
             // cada vez que se presiona el boton se agrega una fila
             $('#add_carrera_button').on('click', function () {
                 numero_de_filas++;
+                var n_carreras = $('#n_carreras');
+                var num = parseInt(n_carreras.val());
+                n_carreras.val(num + 1);
                 $('#form-carreras').append(
                     '<div class="select_carrera_row_wrapper">\n' +
                     '    <a href="#" class="borrar_fila">\n' +

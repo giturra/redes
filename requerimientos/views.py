@@ -37,7 +37,7 @@ class QuotaRequirement(ListView):
     def post(self, request, *args, **kwargs):
         for key, value in request.POST.items():
             print(key, value)
-        return redirect('/requerimientos/cupos/')
+        return redirect('/')
 
     
     
