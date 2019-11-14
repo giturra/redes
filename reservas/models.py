@@ -11,12 +11,16 @@ class Empresa(models.Model):
 
     tipo_empresa = models.IntegerField(choices=OPCIONES_EMPRESAS)
     logo = models.ImageField(upload_to='logos/', null=True)
-    ofertas = models.TextField()  # supongo que vamos a guardar el json como string?
-    descripcion = models.TextField(max_length=500)
+    #ofertas = models.TextField()  # supongo que vamos a guardar el json como string?
+    descripcion = models.TextField(max_length=1000)
     web = models.URLField()
+    fb = models.URLField()
+    lkin = models.URLField()
+    ig = models.URLField()
+    twt = models.URLField()
     rut = models.CharField(max_length=20)
     nombre = models.CharField(max_length=200)
-    encuesta = models.URLField()
+    #encuesta = models.URLField()
 
     def __str__(self):
         return self.nombre
