@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'app',
     'crispy_forms',
     'perfiles',
-    'requerimientos'
+    'requerimientos',
+    'reservas'
 ]
 
 MIDDLEWARE = [
