@@ -3,7 +3,13 @@ from perfiles.models import Perfil
 from django.db import models
 
 class Empresa(models.Model):
-    privado = models.BooleanField()
+
+    OPCIONES_EMPRESAS = (
+        (0, "Privada"),
+        (1, "Invitada"),
+    )
+
+    tipo_empresa = models.IntegerField(choices=OPCIONES_EMPRESAS)
     logo = models.ImageField(upload_to='logos/', null=True)
     ofertas = models.TextField()  # supongo que vamos a guardar el json como string?
     descripcion = models.TextField(max_length=500)

@@ -22,5 +22,6 @@ urlpatterns = [
     path('', include(('app.urls', 'app'), namespace='app')),
     path('', include(('perfiles.urls', 'perfiles'), namespace='perfiles')),
     path('requerimientos/', include(('requerimientos.urls', 'requerimientos'), namespace='requerimientos')),
+    path('reservas/', include(('reservas.urls', 'reservas'), namespace='reservas')),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
