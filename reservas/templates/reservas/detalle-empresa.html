@@ -40,10 +40,10 @@
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 					<div class="jp_cs_com_info_wrapper">
 						<div class="jp_cs_com_info_img">
-							<img src="{% static "images/content/cs1.jpg "%}" alt="job_img">
+							<img src="{{ empresa.logo.url }}" alt="job_img" width="165px;">
 						</div>
 						<div class="jp_cs_com_info_img_cont">
-							<h2>User Interface Project Manager With Comera At Mumbai Location</h2>
+							<h1>{{empresa.nombre}}</h1>
 							<p>Technology Management Consulting</p>
 							<h3><i class="fa fa-map-marker"></i> &nbsp;&nbsp;Los Angeles Califonia PO, 455001</h3>
 						</div>
@@ -60,15 +60,13 @@
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="jp_listing_left_sidebar_wrapper">
                         <div class="jp_job_des">
-                            <h2>Company Description</h2>
-                            <p>Google is and always will be an engineering company. We hire people with a broad set of ical skills who are ready to tackle some of technology's greatest challenges and make an impact on millions, if not billions, of users.
-                                At Google, engineers not only revolutionize search, they routinely work on massive scalability and storage solutions, large-scale applications and rely new platforms for developers around the world. From AdWords to Chrome,
-                                Android to Ye, Social to Local, Google engineers are changing the world.</p>
-                            <ul>
+                            <h2>Descripción</h2>
+                            <p style="text-align:justify">{{empresa.descripcion}}</p>
+                            {% comment %} <ul>
                                 <li><i class="fa fa-globe"></i>&nbsp;&nbsp; <a href="#">www.example.com</a></li>
                                 <li><i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp; <a href="#">Download Info</a></li>
 
-                            </ul>
+                            </ul> {% endcomment %}
                         </div>
                         {% comment %} <div class="jp_job_res">
                             <h2>Responsibilities</h2>
@@ -98,7 +96,7 @@
                     <div class="jp_listing_left_bottom_sidebar_wrapper">
                         <div class="jp_listing_left_bottom_sidebar_social_wrapper">
                             <ul class="hidden-xs">
-                                <li>SHARE :</li>
+                                <li>LINKS :</li>
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
@@ -516,7 +514,7 @@
                                     </div>
                                 </div>
                                 <div class="jp_listing_overview_list_outside_main_wrapper">
-                                    <div class="jp_listing_overview_list_main_wrapper">
+                                    {% comment %} <div class="jp_listing_overview_list_main_wrapper">
                                         <div class="jp_listing_list_icon">
                                             <i class="fa fa-map-marker"></i>
                                         </div>
@@ -559,7 +557,7 @@
                                                 <li>4+ Years Experience</li>
                                             </ul>
                                         </div>
-                                    </div>
+                                    </div> {% endcomment %}
                                     <div class="jp_listing_right_bar_btn_wrapper">
                                         <div class="jp_listing_right_bar_btn">
                                             <ul>

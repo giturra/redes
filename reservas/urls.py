@@ -3,5 +3,5 @@ from .views import CompaniesList, CompaniesDetail
 
 urlpatterns = [
     path('empresas/', CompaniesList.as_view(), name='companies'),
-    path('empresas/detalle/', CompaniesDetail.as_view(), name='detail')
+    path('empresa/<int:pk>/', CompaniesDetail.as_view(), name='detail')
 ]

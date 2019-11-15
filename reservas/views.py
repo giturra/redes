@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Empresa
-from django.views.generic import ListView, TemplateView
+from django.views.generic import DetailView, ListView
 
 
 class CompaniesList(ListView):
@@ -9,6 +9,7 @@ class CompaniesList(ListView):
     context_object_name = 'empresas'
 
 
-class CompaniesDetail(TemplateView):
+class CompaniesDetail(DetailView):
     template_name = 'reservas/detalle-empresa.html'
+    model = Empresa
 
