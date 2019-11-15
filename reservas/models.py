@@ -25,6 +25,8 @@ class Empresa(models.Model):
     def __str__(self):
         return self.nombre
 
+#class PerfilBuscado(model.)
+
 
 class ImagenEmpresa(models.Model):
     imagen = models.ImageField(upload_to='imagenes/', null=True)
