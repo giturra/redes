@@ -1,6 +1,8 @@
 from app.models import Carrera, Empleo
 from perfiles.models import Perfil
 from django.db import models
+from app.models import Carrera, Empleo
+
 
 class Empresa(models.Model):
 
@@ -9,7 +11,7 @@ class Empresa(models.Model):
         (1, "Invitada"),
     )
 
-    tipo_empresa = models.IntegerField(choices=OPCIONES_EMPRESAS)
+    tipo_empresa = models.IntegerField(choices=OPCIONES_EMPRESAS, default=0)
     logo = models.ImageField(upload_to='logos/', null=True)
     #ofertas = models.TextField()  # supongo que vamos a guardar el json como string?
     descripcion = models.TextField(max_length=1000)
@@ -24,6 +26,13 @@ class Empresa(models.Model):
 
     def __str__(self):
         return self.nombre
+
+class Cupo(models.Model):
+
+    carrera = models.ManyToManyField(Carrera)
+    plan = models.ManyToManyField(Empleo)
+    cupos = models.IntegerField()
+    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
 
 #class PerfilBuscado(model.)
 

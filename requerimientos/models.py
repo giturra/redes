@@ -42,12 +42,12 @@ class Producer(models.Model):
     requerimiento = models.ForeignKey(Requerimiento, on_delete=models.CASCADE)
 
 
-class Cupos(models.Model):
-
-    class Meta:
-        verbose_name = 'Cupo'
-
-    carrera = models.ManyToManyField(Carrera)
-    plan = models.ManyToManyField(Empleo)
-    cupos = models.IntegerField()
-    requerimiento = models.ForeignKey(Requerimiento, on_delete=models.CASCADE)
+# class Cupos(models.Model):
+#
+#     class Meta:
+#         verbose_name = 'Cupo'
+#
+#     carrera = models.ManyToManyField(Carrera)
+#     plan = models.ManyToManyField(Empleo)
+#     cupos = models.IntegerField()
+#     requerimiento = models.ForeignKey(Requerimiento, on_delete=models.CASCADE)

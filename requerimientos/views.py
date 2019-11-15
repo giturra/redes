@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from django.views.generic import FormView, ListView
 from django.forms import ValidationError
 from .forms import RequirementForm
-from .models import Cupos, Requerimiento, Producer
+from .models import Requerimiento, Producer
 from app.models import Carrera, Empleo
+from reservas.models import Cupo, Empresa
 
 
 class Requirement(FormView):
@@ -81,40 +82,41 @@ def cupos_carreras(request):
                 requirement_id = request.COOKIES.get('req_id')
                 #print(requirement_id)
                 requirement = Requerimiento.objects.get(id=requirement_id)
+                empresa = Empresa.objects.create(descripcion=requirement.descripcion, nombre=requirement.nombre_empresa)
 
                 if p1 and p1 != 0:
                     plan = Empleo.objects.get(id=1)
-                    p1_data = Cupos(cupos=p1, requerimiento=requirement)
+                    p1_data = Cupo(cupos=p1, empresa=empresa)
                     p1_data.save()
                     p1_data.carrera.add(carrera)
                     p1_data.plan.add(plan)
                 if p2 and p2 != 0:
                     plan = Empleo.objects.get(id=2)
-                    p2_data = Cupos(cupos=p2, requerimiento=requirement)
+                    p2_data = Cupo(cupos=p2, empresa=empresa)
                     p2_data.save()
                     p2_data.carrera.add(carrera)
                     p2_data.plan.add(plan)
                 if p3 and p3 != 0:
                     plan = Empleo.objects.get(id=3)
-                    p3_data = Cupos(cupos=p3, requerimiento=requirement)
+                    p3_data = Cupo(cupos=p3, empresa=empresa)
                     p3_data.save()
                     p3_data.carrera.add(carrera)
                     p3_data.plan.add(plan)
                 if me and me != 0:
                     plan = Empleo.objects.get(id=4)
-                    me_data = Cupos(cupos=me, requerimiento=requirement)
+                    me_data = Cupo(cupos=me, empresa=empresa)
                     me_data.save()
                     me_data.carrera.add(carrera)
                     me_data.plan.add(plan)
                 if pt and pt != 0:
                     plan = Empleo.objects.get(id=5)
-                    pt_data = Cupos(cupos=pt, requerimiento=requirement)
+                    pt_data = Cupo(cupos=pt, empresa=empresa)
                     pt_data.save()
                     pt_data.carrera.add(carrera)
                     pt_data.plan.add(plan)
                 if ft and ft != 0:
                     plan = Empleo.objects.get(id=6)
-                    ft_data = Cupos(cupos=pt, requerimiento=requirement)
+                    ft_data = Cupo(cupos=pt, empresa=empresa)
                     ft_data.save()
                     ft_data.carrera.add(carrera)
                     ft_data.plan.add(plan)
